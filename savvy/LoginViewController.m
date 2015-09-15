@@ -30,7 +30,6 @@
 }
 
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    Savvy *savvy = [[Savvy alloc ] init];
     [self performSegueWithIdentifier:@"loggedin" sender:self];
 }
 

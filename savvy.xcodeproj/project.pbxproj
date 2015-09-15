@@ -12,7 +12,7 @@
 		72029EC4193517F7005A142F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72029EC3193517F7005A142F /* UIKit.framework */; };
 		72029ECA193517F7005A142F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 72029EC8193517F7005A142F /* InfoPlist.strings */; };
 		72029ECC193517F7005A142F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 72029ECB193517F7005A142F /* main.m */; };
-		72029ED0193517F7005A142F /* loginAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72029ECF193517F7005A142F /* loginAppDelegate.m */; };
+		72029ED0193517F7005A142F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 72029ECF193517F7005A142F /* AppDelegate.m */; };
 		72029ED3193517F7005A142F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72029ED1193517F7005A142F /* Main.storyboard */; };
 		72029ED6193517F7005A142F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72029ED5193517F7005A142F /* LoginViewController.m */; };
 		72029ED8193517F7005A142F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72029ED7193517F7005A142F /* Images.xcassets */; };
@@ -38,12 +38,15 @@
 		72789B82198171B3002AE495 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72789B81198171B3002AE495 /* SystemConfiguration.framework */; };
 		727B40331938DF5700BC64EE /* login_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 727B40321938DF5700BC64EE /* login_background.png */; };
 		72C6C72F194F98C4005E1B0E /* TFArrow-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72C6C72E194F98AD005E1B0E /* TFArrow-Light.ttf */; };
-		72DEF75F1948EFBF00D1D128 /* savvyLeft.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DEF75E1948EFBF00D1D128 /* savvyLeft.m */; };
-		72DEF7621948EFCA00D1D128 /* savvyRight.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DEF7611948EFCA00D1D128 /* savvyRight.m */; };
-		72DEF7651948EFE400D1D128 /* profilePage.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DEF7641948EFE400D1D128 /* profilePage.m */; };
 		72DEF7681948F01400D1D128 /* Savvy.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DEF7671948F01400D1D128 /* Savvy.m */; };
 		72DEF76B194A0FE400D1D128 /* savvyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 72DEF76A194A0FE400D1D128 /* savvyModel.m */; };
 		BB7816291BA66717001AFEA2 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7816281BA66717001AFEA2 /* FacebookSDK.framework */; };
+		BB78162D1BA68035001AFEA2 /* CouponDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78162B1BA68035001AFEA2 /* CouponDetailsViewController.m */; };
+		BB78162E1BA68035001AFEA2 /* CouponDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB78162C1BA68035001AFEA2 /* CouponDetailsViewController.xib */; };
+		BB7816311BA68358001AFEA2 /* CouponModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7816301BA68358001AFEA2 /* CouponModel.m */; };
+		BB7816341BA79311001AFEA2 /* MainSwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7816331BA79311001AFEA2 /* MainSwipeViewController.m */; };
+		BB7816381BA7B068001AFEA2 /* CouponButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB7816371BA7B068001AFEA2 /* CouponButton.m */; };
+		BB78163E1BA7B949001AFEA2 /* WalletButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB78163D1BA7B949001AFEA2 /* WalletButton.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,8 +68,8 @@
 		72029EC9193517F7005A142F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		72029ECB193517F7005A142F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		72029ECD193517F7005A142F /* Savvy-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Savvy-Prefix.pch"; sourceTree = "<group>"; };
-		72029ECE193517F7005A142F /* loginAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = loginAppDelegate.h; sourceTree = "<group>"; };
-		72029ECF193517F7005A142F /* loginAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = loginAppDelegate.m; sourceTree = "<group>"; };
+		72029ECE193517F7005A142F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		72029ECF193517F7005A142F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		72029ED2193517F7005A142F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		72029ED4193517F7005A142F /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		72029ED5193517F7005A142F /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
@@ -92,17 +95,22 @@
 		72789B81198171B3002AE495 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		727B40321938DF5700BC64EE /* login_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_background.png; sourceTree = "<group>"; };
 		72C6C72E194F98AD005E1B0E /* TFArrow-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TFArrow-Light.ttf"; sourceTree = "<group>"; };
-		72DEF75D1948EFBF00D1D128 /* savvyLeft.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = savvyLeft.h; sourceTree = "<group>"; };
-		72DEF75E1948EFBF00D1D128 /* savvyLeft.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = savvyLeft.m; sourceTree = "<group>"; };
-		72DEF7601948EFCA00D1D128 /* savvyRight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = savvyRight.h; sourceTree = "<group>"; };
-		72DEF7611948EFCA00D1D128 /* savvyRight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = savvyRight.m; sourceTree = "<group>"; };
-		72DEF7631948EFE400D1D128 /* profilePage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = profilePage.h; sourceTree = "<group>"; };
-		72DEF7641948EFE400D1D128 /* profilePage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = profilePage.m; sourceTree = "<group>"; };
 		72DEF7661948F01400D1D128 /* Savvy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Savvy.h; sourceTree = "<group>"; };
 		72DEF7671948F01400D1D128 /* Savvy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Savvy.m; sourceTree = "<group>"; };
 		72DEF769194A0FE400D1D128 /* savvyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = savvyModel.h; path = Model/savvyModel.h; sourceTree = "<group>"; };
 		72DEF76A194A0FE400D1D128 /* savvyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = savvyModel.m; path = Model/savvyModel.m; sourceTree = "<group>"; };
 		BB7816281BA66717001AFEA2 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		BB78162A1BA68035001AFEA2 /* CouponDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponDetailsViewController.h; path = savvy/CouponDetailsViewController.h; sourceTree = SOURCE_ROOT; };
+		BB78162B1BA68035001AFEA2 /* CouponDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponDetailsViewController.m; path = savvy/CouponDetailsViewController.m; sourceTree = SOURCE_ROOT; };
+		BB78162C1BA68035001AFEA2 /* CouponDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CouponDetailsViewController.xib; path = savvy/CouponDetailsViewController.xib; sourceTree = SOURCE_ROOT; };
+		BB78162F1BA68358001AFEA2 /* CouponModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponModel.h; path = savvy/CouponModel.h; sourceTree = SOURCE_ROOT; };
+		BB7816301BA68358001AFEA2 /* CouponModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponModel.m; path = savvy/CouponModel.m; sourceTree = SOURCE_ROOT; };
+		BB7816321BA79311001AFEA2 /* MainSwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainSwipeViewController.h; path = savvy/MainSwipeViewController.h; sourceTree = SOURCE_ROOT; };
+		BB7816331BA79311001AFEA2 /* MainSwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainSwipeViewController.m; path = savvy/MainSwipeViewController.m; sourceTree = SOURCE_ROOT; };
+		BB7816361BA7B068001AFEA2 /* CouponButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CouponButton.h; path = savvy/CouponButton.h; sourceTree = SOURCE_ROOT; };
+		BB7816371BA7B068001AFEA2 /* CouponButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CouponButton.m; path = savvy/CouponButton.m; sourceTree = SOURCE_ROOT; };
+		BB78163C1BA7B949001AFEA2 /* WalletButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WalletButton.h; path = savvy/WalletButton.h; sourceTree = SOURCE_ROOT; };
+		BB78163D1BA7B949001AFEA2 /* WalletButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WalletButton.m; path = savvy/WalletButton.m; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,21 +192,21 @@
 		72029EC5193517F7005A142F /* Savvy */ = {
 			isa = PBXGroup;
 			children = (
-				72029ECE193517F7005A142F /* loginAppDelegate.h */,
-				72029ECF193517F7005A142F /* loginAppDelegate.m */,
-				72029ED1193517F7005A142F /* Main.storyboard */,
-				72DEF7601948EFCA00D1D128 /* savvyRight.h */,
-				72DEF7611948EFCA00D1D128 /* savvyRight.m */,
-				72DEF75D1948EFBF00D1D128 /* savvyLeft.h */,
-				72DEF75E1948EFBF00D1D128 /* savvyLeft.m */,
-				72DEF7661948F01400D1D128 /* Savvy.h */,
-				72DEF7671948F01400D1D128 /* Savvy.m */,
-				72DEF7631948EFE400D1D128 /* profilePage.h */,
-				72DEF7641948EFE400D1D128 /* profilePage.m */,
+				72029ECE193517F7005A142F /* AppDelegate.h */,
+				72029ECF193517F7005A142F /* AppDelegate.m */,
+				BB78162A1BA68035001AFEA2 /* CouponDetailsViewController.h */,
+				BB78162B1BA68035001AFEA2 /* CouponDetailsViewController.m */,
+				BB78162C1BA68035001AFEA2 /* CouponDetailsViewController.xib */,
+				BB78163F1BA7BCD8001AFEA2 /* Custom Buttons */,
+				72029ED7193517F7005A142F /* Images.xcassets */,
 				72029ED4193517F7005A142F /* LoginViewController.h */,
 				72029ED5193517F7005A142F /* LoginViewController.m */,
-				72029ED7193517F7005A142F /* Images.xcassets */,
+				72029ED1193517F7005A142F /* Main.storyboard */,
+				BB7816321BA79311001AFEA2 /* MainSwipeViewController.h */,
+				BB7816331BA79311001AFEA2 /* MainSwipeViewController.m */,
 				729AF6C21947515F0042B125 /* Model */,
+				72DEF7661948F01400D1D128 /* Savvy.h */,
+				72DEF7671948F01400D1D128 /* Savvy.m */,
 				72029EC6193517F7005A142F /* Supporting Files */,
 			);
 			path = Savvy;
@@ -229,6 +237,8 @@
 			children = (
 				72DEF769194A0FE400D1D128 /* savvyModel.h */,
 				72DEF76A194A0FE400D1D128 /* savvyModel.m */,
+				BB78162F1BA68358001AFEA2 /* CouponModel.h */,
+				BB7816301BA68358001AFEA2 /* CouponModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -239,6 +249,17 @@
 			);
 			name = SavvyTests;
 			path = "../../Desktop/ios/savvy/Savvy 3.21.24 PM/SavvyTests";
+			sourceTree = "<group>";
+		};
+		BB78163F1BA7BCD8001AFEA2 /* Custom Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				BB7816361BA7B068001AFEA2 /* CouponButton.h */,
+				BB7816371BA7B068001AFEA2 /* CouponButton.m */,
+				BB78163C1BA7B949001AFEA2 /* WalletButton.h */,
+				BB78163D1BA7B949001AFEA2 /* WalletButton.m */,
+			);
+			name = "Custom Buttons";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +348,7 @@
 				721D9C1619B7788B003BE843 /* wallet_space.png in Resources */,
 				72598B001938ECB300772F97 /* facebook bar.png in Resources */,
 				727B40331938DF5700BC64EE /* login_background.png in Resources */,
+				BB78162E1BA68035001AFEA2 /* CouponDetailsViewController.xib in Resources */,
 				72598AFC1938E6C200772F97 /* logo_savvy.png in Resources */,
 				72029ED8193517F7005A142F /* Images.xcassets in Resources */,
 				72C6C72F194F98C4005E1B0E /* TFArrow-Light.ttf in Resources */,
@@ -350,13 +372,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72DEF7651948EFE400D1D128 /* profilePage.m in Sources */,
 				72DEF76B194A0FE400D1D128 /* savvyModel.m in Sources */,
-				72DEF7621948EFCA00D1D128 /* savvyRight.m in Sources */,
-				72029ED0193517F7005A142F /* loginAppDelegate.m in Sources */,
+				BB78162D1BA68035001AFEA2 /* CouponDetailsViewController.m in Sources */,
+				72029ED0193517F7005A142F /* AppDelegate.m in Sources */,
 				72029ED6193517F7005A142F /* LoginViewController.m in Sources */,
 				72DEF7681948F01400D1D128 /* Savvy.m in Sources */,
-				72DEF75F1948EFBF00D1D128 /* savvyLeft.m in Sources */,
+				BB7816311BA68358001AFEA2 /* CouponModel.m in Sources */,
+				BB7816341BA79311001AFEA2 /* MainSwipeViewController.m in Sources */,
+				BB7816381BA7B068001AFEA2 /* CouponButton.m in Sources */,
+				BB78163E1BA7B949001AFEA2 /* WalletButton.m in Sources */,
 				72029ECC193517F7005A142F /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

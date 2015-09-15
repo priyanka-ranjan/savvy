@@ -6,11 +6,11 @@
 //  Copyright (c) 2014 Savvy. All rights reserved.
 //
 
-#import "loginAppDelegate.h"
+#import "AppDelegate.h"
 #import <Parse/Parse.h>
 
 
-@implementation loginAppDelegate
+@implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

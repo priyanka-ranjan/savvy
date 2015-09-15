@@ -10,9 +10,7 @@
 #import <Parse/Parse.h>
 
 @interface Savvy : UIViewController
-{
-    NSMutableArray *blurredImages;
-}
+
 - (void)drawRandomLeftTikkit;
 - (void)drawRandomRightTikkit;
 
