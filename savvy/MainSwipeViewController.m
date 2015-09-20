@@ -9,6 +9,7 @@
 #import "CouponButton.h"
 #import "WalletButton.h"
 
+#import "SwipeService.h"
 
 @interface MainSwipeViewController ()
 
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) CouponModel *leftCouponModel;
 @property (nonatomic, strong) CouponModel *rightCouponModel;
 
+@property (nonatomic, strong) SwipeService *swipeService;
+
 @end
 
 @implementation MainSwipeViewController
@@ -39,6 +42,7 @@
 
     [self generateLeftCoupon];
     [self generateRightCoupon];
+    [self getNewCoupon];
 }
 
 - (void)addGestureRecognizers {
@@ -51,6 +55,10 @@
 
 
 #pragma mark - Data Builders
+
+- (void)getNewCoupon {
+    [self.swipeService getNewCoupon];
+}
 
 - (void)generateLeftCoupon {
     savvyModel *tiks = [[savvyModel alloc] init];

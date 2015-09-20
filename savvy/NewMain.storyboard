@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="A1b-wg-t1l">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="via-rI-8AE">
+            <objects>
+                <navigationController id="A1b-wg-t1l" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="gPv-YY-vRb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="ftU-kr-p5g" kind="relationship" relationship="rootViewController" id="Nkk-Vn-UUn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZoY-V8-WC9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-17154" y="1346"/>
+        </scene>
+        <!--Login View Controller-->
+        <scene sceneID="sFp-Bf-POy">
+            <objects>
+                <viewController id="ftU-kr-p5g" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1Jz-Sb-xrF"/>
+                        <viewControllerLayoutGuide type="bottom" id="xUz-zT-aSk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="KUR-v1-gqb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login_background.png" translatesAutoresizingMaskIntoConstraints="NO" id="w6C-wp-mIr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo_words1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Cbe-X2-bD3">
+                                <rect key="frame" x="5" y="62" width="300" height="300"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hnX-11-p35">
+                                <rect key="frame" x="75" y="442" width="183" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <state key="normal" title="Having trouble logging in?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Swip.   Claim.  Savvy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG3-bf-Njp">
+                                <rect key="frame" x="92" y="308" width="137" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfC-2s-SjU">
+                                <rect key="frame" x="50" y="348" width="233" height="64"/>
+                                <state key="normal" backgroundImage="facebook bar.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Wd8-Xr-sWP" kind="show" id="aak-oi-7y6">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.18469693600000001" blue="0.19703932939999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="xUz-zT-aSk" firstAttribute="top" secondItem="w6C-wp-mIr" secondAttribute="bottom" id="0xt-01-3X7"/>
+                            <constraint firstAttribute="trailing" secondItem="w6C-wp-mIr" secondAttribute="trailing" id="1BG-Mb-csu"/>
+                            <constraint firstAttribute="bottom" secondItem="w6C-wp-mIr" secondAttribute="bottom" id="ddF-Fd-GpO"/>
+                            <constraint firstItem="w6C-wp-mIr" firstAttribute="leading" secondItem="KUR-v1-gqb" secondAttribute="leading" id="ddK-nx-8vI"/>
+                            <constraint firstItem="w6C-wp-mIr" firstAttribute="top" secondItem="KUR-v1-gqb" secondAttribute="top" id="isJ-Es-ua9"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="0xt-01-3X7"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="SHT-MJ-qby"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eaR-9n-bLB" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16411" y="1346"/>
+        </scene>
+        <!--Savvy-->
+        <scene sceneID="wCl-UT-41R">
+            <objects>
+                <viewController id="uXz-NW-1sS" customClass="Savvy" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lVo-n9-A8P"/>
+                        <viewControllerLayoutGuide type="bottom" id="gep-GA-TTx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="fMc-fV-xtx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Fr-5F-6rD">
+                                <rect key="frame" x="160" y="0.0" width="160" height="568"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Rlp-Nd-HUf">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zNC-GH-D4G" userLabel="BottomBarView">
+                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vn1-1d-TUh" userLabel="ProfileButton">
+                                <rect key="frame" x="20" y="473" width="75" height="75"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openProfile:" destination="uXz-NW-1sS" eventType="touchUpInside" id="XFo-rD-6My"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcS-lg-rgh" userLabel="RightTikkitButton">
+                                <rect key="frame" x="175" y="175" width="130" height="130"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e0a-he-t0s" userLabel="LeftTikkitButton">
+                                <rect key="frame" x="15" y="175" width="130" height="130"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Dz-DN-BXY" userLabel="RefreshButton">
+                                <rect key="frame" x="137" y="30" width="46" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.18469693600000001" blue="0.19703932939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="refresh:" destination="uXz-NW-1sS" eventType="touchUpInside" id="iOk-b7-DLQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G8D-M5-X84" userLabel="WalletOneButton">
+                                <rect key="frame" x="103" y="440" width="60" height="60"/>
+                                <state key="normal" backgroundImage="wallet_space.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wal1:" destination="uXz-NW-1sS" eventType="touchUpInside" id="dP3-Kd-Un3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B6o-Xg-Aah" userLabel="WalletTwoButton">
+                                <rect key="frame" x="175" y="440" width="60" height="60"/>
+                                <state key="normal" backgroundImage="wallet_space.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wal2:" destination="uXz-NW-1sS" eventType="touchUpInside" id="hBS-GV-hu0"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oo2-4s-ETF" userLabel="WalletThreeButton">
+                                <rect key="frame" x="245" y="440" width="60" height="60"/>
+                                <state key="normal" backgroundImage="wallet_space.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wal3:" destination="uXz-NW-1sS" eventType="touchUpInside" id="sE1-yL-THD"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivU-gY-xZi">
+                                <rect key="frame" x="153" y="113" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.35841821439999999" green="0.16076750649999999" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="wal2:" destination="uXz-NW-1sS" eventType="touchUpInside" id="MTT-jO-ydR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z2b-Yo-OOx">
+                                <rect key="frame" x="225" y="113" width="30" height="30"/>
+                                <color key="backgroundColor" red="0.2246872234" green="0.086932406660000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="bottomBar" destination="zNC-GH-D4G" id="KvY-Zj-Lbq"/>
+                        <outlet property="leftBack" destination="Rlp-Nd-HUf" id="E4G-fV-0qt"/>
+                        <outlet property="leftTikkit" destination="e0a-he-t0s" id="Ziq-LQ-tsp"/>
+                        <outlet property="profile" destination="Vn1-1d-TUh" id="YZU-Wd-e6y"/>
+                        <outlet property="rightBack" destination="1Fr-5F-6rD" id="Bfc-VR-EF7"/>
+                        <outlet property="rightTikkit" destination="UcS-lg-rgh" id="CQG-k3-9HJ"/>
+                        <outlet property="wallet1" destination="G8D-M5-X84" id="ION-6j-RYG"/>
+                        <outlet property="wallet2" destination="B6o-Xg-Aah" id="b6s-MQ-Mkl"/>
+                        <outlet property="wallet2Click" destination="ivU-gY-xZi" id="qwY-J4-HQ1"/>
+                        <outlet property="wallet3" destination="oo2-4s-ETF" id="pP9-zv-set"/>
+                        <outlet property="wallet3Click" destination="Z2b-Yo-OOx" id="RX4-M1-Te0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xQq-ZI-4f0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-15009.375" y="1303.5211267605632"/>
+        </scene>
+        <!--Main Swipe View Controller-->
+        <scene sceneID="LjS-OJ-PkT">
+            <objects>
+                <viewController id="Wd8-Xr-sWP" customClass="MainSwipeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YAn-8E-epC"/>
+                        <viewControllerLayoutGuide type="bottom" id="Zlu-Dc-qsV"/>
+                    </layoutGuides>
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="So0-IC-NIX">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PAJ-Zb-QkM" userLabel="LeftBackgroundImageView">
+                                <rect key="frame" x="0.0" y="0.0" width="207" height="736"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="joY-St-YBM" userLabel="RightBackgroundImageView">
+                                <rect key="frame" x="207" y="0.0" width="207" height="736"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ove-sb-Wxy" userLabel="LeftButton" customClass="CouponButton">
+                                <rect key="frame" x="28" y="293" width="150" height="150"/>
+                                <color key="backgroundColor" red="1" green="0.18469693600000001" blue="0.19703932939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="5Uh-fG-Z7z"/>
+                                    <constraint firstAttribute="height" constant="150" id="Ihh-Dr-i91"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="couponButtonTapped:" destination="Wd8-Xr-sWP" eventType="touchUpInside" id="g16-Pv-p1M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKH-Nd-isV" userLabel="RightButton" customClass="CouponButton">
+                                <rect key="frame" x="235" y="293" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.35841821439999999" green="0.16076750649999999" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="7SX-0D-Dga"/>
+                                    <constraint firstAttribute="width" constant="150" id="uG7-m4-Fhd"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="2"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="layer.borderWidth" value="1"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="couponButtonTapped:" destination="Wd8-Xr-sWP" eventType="touchUpInside" id="VGb-g6-7SY"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gLC-PY-JjE">
+                                <rect key="frame" x="0.0" y="656" width="414" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXd-mM-aOX" userLabel="WalletOneButton" customClass="WalletButton">
+                                        <rect key="frame" x="177" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="2Km-it-0G6"/>
+                                            <constraint firstAttribute="height" constant="60" id="EIf-35-vPA"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="wallet_space.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="walletButtonTapped:" destination="Wd8-Xr-sWP" eventType="touchUpInside" id="97d-Aw-HLx"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Pf-Nt-HAC" userLabel="WalletOneButton" customClass="WalletButton">
+                                        <rect key="frame" x="277" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="60" id="4Ga-dv-b9h"/>
+                                            <constraint firstAttribute="height" constant="60" id="vEC-Jr-ccB"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="wallet_space.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="walletButtonTapped:" destination="Wd8-Xr-sWP" eventType="touchUpInside" id="qMy-11-Wp8"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auf-9l-nb9" userLabel="WalletOneButton" customClass="WalletButton">
+                                        <rect key="frame" x="77" y="10" width="60" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="9WU-et-B75"/>
+                                            <constraint firstAttribute="width" constant="60" id="OLb-Lk-JvE"/>
+                                        </constraints>
+                                        <state key="normal" backgroundImage="wallet_space.png">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="walletButtonTapped:" destination="Wd8-Xr-sWP" eventType="touchUpInside" id="WwJ-JH-UyO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.40999999999999998" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="cXd-mM-aOX" secondAttribute="centerX" id="Gfk-36-H2L"/>
+                                    <constraint firstItem="0Pf-Nt-HAC" firstAttribute="leading" secondItem="cXd-mM-aOX" secondAttribute="trailing" constant="40" id="JTd-Om-2sh"/>
+                                    <constraint firstAttribute="centerY" secondItem="auf-9l-nb9" secondAttribute="centerY" id="aFE-iH-dZH"/>
+                                    <constraint firstAttribute="height" constant="80" id="ahO-fg-8iD"/>
+                                    <constraint firstAttribute="centerY" secondItem="cXd-mM-aOX" secondAttribute="centerY" id="nWk-1t-Pe0"/>
+                                    <constraint firstItem="cXd-mM-aOX" firstAttribute="leading" secondItem="auf-9l-nb9" secondAttribute="trailing" constant="40" id="qsn-9N-pTx"/>
+                                    <constraint firstAttribute="centerY" secondItem="0Pf-Nt-HAC" secondAttribute="centerY" id="yUY-5M-6mK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="joY-St-YBM" firstAttribute="top" secondItem="So0-IC-NIX" secondAttribute="top" id="9QO-Pa-Tzj"/>
+                            <constraint firstItem="ZKH-Nd-isV" firstAttribute="centerY" secondItem="joY-St-YBM" secondAttribute="centerY" id="Klr-YP-dr3"/>
+                            <constraint firstItem="joY-St-YBM" firstAttribute="leading" secondItem="PAJ-Zb-QkM" secondAttribute="trailing" id="Wqy-D9-2Do"/>
+                            <constraint firstItem="PAJ-Zb-QkM" firstAttribute="centerX" secondItem="Ove-sb-Wxy" secondAttribute="centerX" id="XCH-tZ-Mrd"/>
+                            <constraint firstItem="PAJ-Zb-QkM" firstAttribute="leading" secondItem="So0-IC-NIX" secondAttribute="leading" id="cVr-on-Jqj"/>
+                            <constraint firstItem="Zlu-Dc-qsV" firstAttribute="top" secondItem="joY-St-YBM" secondAttribute="bottom" id="hnh-TM-N7f"/>
+                            <constraint firstItem="ZKH-Nd-isV" firstAttribute="centerX" secondItem="joY-St-YBM" secondAttribute="centerX" id="jNl-xB-FR2"/>
+                            <constraint firstAttribute="trailing" secondItem="gLC-PY-JjE" secondAttribute="trailing" id="jSD-bt-VSi"/>
+                            <constraint firstItem="gLC-PY-JjE" firstAttribute="leading" secondItem="So0-IC-NIX" secondAttribute="leading" id="jmO-0l-iOc"/>
+                            <constraint firstItem="PAJ-Zb-QkM" firstAttribute="centerY" secondItem="Ove-sb-Wxy" secondAttribute="centerY" id="k4I-sL-2B5"/>
+                            <constraint firstItem="PAJ-Zb-QkM" firstAttribute="top" secondItem="So0-IC-NIX" secondAttribute="top" id="kb4-3e-oIe"/>
+                            <constraint firstItem="Zlu-Dc-qsV" firstAttribute="top" secondItem="PAJ-Zb-QkM" secondAttribute="bottom" id="lsm-ml-Tv1"/>
+                            <constraint firstItem="Zlu-Dc-qsV" firstAttribute="top" secondItem="gLC-PY-JjE" secondAttribute="bottom" id="nGv-gV-n9b"/>
+                            <constraint firstAttribute="trailing" secondItem="joY-St-YBM" secondAttribute="trailing" id="qdF-qQ-AXo"/>
+                            <constraint firstItem="PAJ-Zb-QkM" firstAttribute="width" secondItem="So0-IC-NIX" secondAttribute="width" multiplier="0.5" id="xYB-9s-diE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hn7-R6-92e"/>
+                    <connections>
+                        <outlet property="firstWalletButton" destination="auf-9l-nb9" id="Kby-1C-NoH"/>
+                        <outlet property="leftBackgroundImageView" destination="PAJ-Zb-QkM" id="dZR-Dy-2Zn"/>
+                        <outlet property="leftButton" destination="Ove-sb-Wxy" id="jer-Ux-YJr"/>
+                        <outlet property="rightBackgroundImageView" destination="joY-St-YBM" id="cxS-0l-v7Z"/>
+                        <outlet property="rightButton" destination="ZKH-Nd-isV" id="ixC-6C-iBG"/>
+                        <outlet property="secondWalletButton" destination="cXd-mM-aOX" id="TVr-zD-G8u"/>
+                        <outlet property="thirdWalletButton" destination="0Pf-Nt-HAC" id="FAQ-Hd-LHD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="csX-5b-lb0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-16411" y="2246"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="facebook bar.png" width="461" height="128"/>
+        <image name="login_background.png" width="675" height="1125"/>
+        <image name="logo_words1.png" width="1000" height="1000"/>
+        <image name="wallet_space.png" width="100" height="100"/>
+    </resources>
+</document>

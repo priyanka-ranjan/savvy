@@ -6,14 +6,11 @@
 //  Copyright (c) 2014 Savvy. All rights reserved.
 //
 
-#import "loginViewController.h"
-#import "Savvy.h"
-#import <FacebookSDK/FacebookSDK.h>
+#import "LoginViewController.h"
 
 
 @interface LoginViewController ()
 
-@property (weak, nonatomic) IBOutlet FBLoginView *loginView;
 
 @end
 
@@ -21,16 +18,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    [super viewDidLoad];  
     
-    self.loginView.readPermissions = @[@"public_profile", @"email", @"user_friends"];
-    
-    
-}
-
-- (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
-    [self performSegueWithIdentifier:@"loggedin" sender:self];
 }
 
 @end
