@@ -14,6 +14,7 @@
 
 @property (nonatomic, weak) id<NetworkingManagerDelegate> delegate;
 
++ (NetworkingManager *)sharedInstance;
 
 - (void)getCoupons;
 - (void)postCouponModel:(CouponModel *)coupon;

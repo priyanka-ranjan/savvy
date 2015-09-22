@@ -4,14 +4,16 @@
 #import "CouponDetailsViewController.h"
 
 #import "CouponModel.h"
-#import "savvyModel.h"
+#import "TestDataBuilder.h"
 
 #import "CouponButton.h"
 #import "WalletButton.h"
 
 #import "SwipeService.h"
 
-@interface MainSwipeViewController ()
+#import "UIImageEffects.h"
+
+@interface MainSwipeViewController () <SwipeServiceProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *leftBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightBackgroundImageView;
@@ -25,6 +27,7 @@
 
 @property (nonatomic, strong) CouponModel *leftCouponModel;
 @property (nonatomic, strong) CouponModel *rightCouponModel;
+@property (nonatomic, strong) CouponModel *serverRecievedCoupon;
 
 @property (nonatomic, strong) SwipeService *swipeService;
 
@@ -37,15 +40,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    [self addGestureRecognizers];
-
+    
+    [self setupSwipeService];
+    [self setupGestureRecognizers];
+    
     [self generateLeftCoupon];
     [self generateRightCoupon];
-    [self getNewCoupon];
 }
 
-- (void)addGestureRecognizers {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.swipeService getNewCoupon];
+}
+
+#pragma mark - Setup
+
+- (void)setupSwipeService {
+    self.swipeService = [[SwipeService alloc] init];
+    self.swipeService.delegate = self;
+}
+
+- (void)setupGestureRecognizers {
     UIPanGestureRecognizer *panGestureLeftButton = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
     [self.leftButton addGestureRecognizer:panGestureLeftButton];
     
@@ -53,36 +68,50 @@
     [self.rightButton addGestureRecognizer:panGestureRightButton];
 }
 
+#pragma mark - <SwipeServiceProtocol>
+
+- (void)serviceRecievedNewCoupon:(CouponModel *)coupon {
+    self.serverRecievedCoupon = coupon;
+}
+
+- (void)serviceRecievedFailedNetworkRequest {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Cannot connect to the server at this time. Please try again later." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+    [alert show];
+}
+
 
 #pragma mark - Data Builders
 
-- (void)getNewCoupon {
-    [self.swipeService getNewCoupon];
-}
-
 - (void)generateLeftCoupon {
-    savvyModel *tiks = [[savvyModel alloc] init];
-    NSArray *brands = [tiks newTikkit];
     self.leftCouponModel = [[CouponModel alloc] init];
-    self.leftCouponModel.storeName = [brands objectAtIndex:0];
-    self.leftCouponModel.storeDiscount = [brands objectAtIndex:1];
-    self.leftCouponModel.productType = [brands objectAtIndex:3];
+    if (self.serverRecievedCoupon) {
+        self.leftCouponModel = self.serverRecievedCoupon;
+        self.serverRecievedCoupon = nil;
+    }else {
+        TestDataBuilder *testDataBuilder = [[TestDataBuilder alloc] init];
+        while ([self.leftCouponModel.storeName isEqualToString:self.rightCouponModel.storeName] || self.leftCouponModel.storeName == nil) {
+            self.leftCouponModel = [testDataBuilder newRandomCoupon];
+        }
+    }
     
-    [self.leftBackgroundImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_back",self.leftCouponModel.storeName]]];
+    UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_back",self.leftCouponModel.storeName]];
+    UIImage *blurredBackgroundImage = [UIImageEffects imageByApplyingDarkEffectToImage:backgroundImage];
+    [self.leftBackgroundImageView setImage:blurredBackgroundImage];
     [self.leftButton setupButtonForCouponModel:self.leftCouponModel];
     
     self.leftButton.tag = 0;
 }
 
 - (void)generateRightCoupon {
-    savvyModel *tiks = [[savvyModel alloc] init];
-    NSArray *brands = [tiks newTikkit];
     self.rightCouponModel = [[CouponModel alloc] init];
-    self.rightCouponModel.storeName = [brands objectAtIndex:0];
-    self.rightCouponModel.storeDiscount = [brands objectAtIndex:1];
-    self.rightCouponModel.productType = [brands objectAtIndex:3];
+    TestDataBuilder *testDataBuilder = [[TestDataBuilder alloc] init];
+    while ([self.leftCouponModel.storeName isEqualToString:self.rightCouponModel.storeName] || self.rightCouponModel.storeName == nil) {
+        self.rightCouponModel = [testDataBuilder newRandomCoupon];
+    }
+    UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_back",self.rightCouponModel.storeName]];
+    UIImage *blurredBackgroundImage = [UIImageEffects imageByApplyingDarkEffectToImage:backgroundImage];
     
-    [self.rightBackgroundImageView setImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_back",self.rightCouponModel.storeName]]];
+    [self.rightBackgroundImageView setImage:blurredBackgroundImage];
     [self.rightButton setupButtonForCouponModel:self.rightCouponModel];
     self.rightButton.tag = 1;
 }

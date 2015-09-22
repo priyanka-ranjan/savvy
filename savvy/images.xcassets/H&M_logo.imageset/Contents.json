@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "H&M_logo.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "2000px-H&M_logo.svg.png",
       "scale" : "2x"
     },
     {

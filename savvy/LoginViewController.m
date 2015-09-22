@@ -1,15 +1,10 @@
-//
-//  loginViewController.m
-//  Savvy
-//
-//  Created by Eric Chen on 2014-05-27.
-//  Copyright (c) 2014 Savvy. All rights reserved.
-//
+
 
 #import "LoginViewController.h"
-
+#import "UIImageEffects.h"
 
 @interface LoginViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *loginBackgroundImageView;
 
 
 @end
@@ -18,8 +13,8 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];  
-    
+    [super viewDidLoad];
+    [self.loginBackgroundImageView setImage:[UIImageEffects imageByApplyingTintEffectWithColor:[UIColor blackColor] toImage:self.loginBackgroundImageView.image]];
 }
 
 @end

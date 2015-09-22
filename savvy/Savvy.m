@@ -7,7 +7,6 @@
 //
 
 #import "Savvy.h"
-#import "savvyModel.h"
 #import <QuartzCore/QuartzCore.h>
 
 #import "CouponDetailsViewController.h"

@@ -7,4 +7,5 @@
 @interface CouponDetailsViewController : UIViewController
 
 - (void)setupViewWithCouponModel:(CouponModel *)coupon;
+
 @end

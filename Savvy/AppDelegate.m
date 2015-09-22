@@ -17,6 +17,16 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+//    self.window = [[UIWindow alloc] init];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"NewMain" bundle:[NSBundle mainBundle]];
+//    UINavigationController *nav = [mainStoryboard instantiateInitialViewController];
+//    
+//    UIViewController *rando = [[UIViewController alloc]init];
+//    rando.view.backgroundColor = [UIColor yellowColor];
+//    self.window.rootViewController = rando;
+//    [self.window makeKeyAndVisible];
+//    self.window.backgroundColor = [UIColor redColor];
+//    self.window.frame = [[UIScreen mainScreen] bounds];
     return YES;
 }
 

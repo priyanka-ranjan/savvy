@@ -37,12 +37,16 @@
 	<array>
 		<string>TFArrow-Light.ttf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>NewMain</string>
 	<key>UIMainStoryboardFile</key>
 	<string>NewMain</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
 	</array>
+	<key>UIRequiresFullScreen</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

@@ -3,8 +3,11 @@
 #import "CouponDetailsViewController.h"
 
 #import "CouponModel.h"
+#import "SwipeService.h"
 
-@interface CouponDetailsViewController ()
+#import "UIImageEffects.h"
+
+@interface CouponDetailsViewController () <SwipeServiceProtocol>
 
 @property (weak, nonatomic) IBOutlet UIImageView *couponImageView;
 @property (weak, nonatomic) IBOutlet UILabel *couponStoreName;
@@ -20,8 +23,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *clientCouponCodeLabel;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
+@property (weak, nonatomic) IBOutlet UIImageView *storeLogoImageView;
 @property (nonatomic, strong) CouponModel *couponModel;
 
+@property (nonatomic, strong) SwipeService *swipeService;
 @end
 
 @implementation CouponDetailsViewController
@@ -37,18 +42,51 @@
 - (void) viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self setupView];
-    self.finalView.hidden = YES;
+    [self setupSwipeService];
+    [self setupFinalAndRedeemView];
 }
 
 #pragma mark - Setup
 
-- (void)setupViewWithCouponModel:(CouponModel *)couponModel {
-    self.couponModel = couponModel;
+-(void)setupFinalAndRedeemView {
+    [self.finalView.layer setCornerRadius:25.0];
+    [self.finalView.layer setBorderColor:[UIColor blackColor].CGColor];
+    [self.finalView.layer setBorderWidth:1.5];
+    [self.finalView.layer setMasksToBounds:YES];
+    self.finalView.hidden = YES;
+    
+    [self.redeemView.layer setCornerRadius:25.0];
+    [self.redeemView.layer setBorderColor:[UIColor blackColor].CGColor];
+    [self.redeemView.layer setBorderWidth:1.5];
+    [self.redeemView.layer setMasksToBounds:YES];
+}
+
+
+- (void)setupSwipeService {
+    self.swipeService = [[SwipeService alloc] init];
+    self.swipeService.delegate = self;
 }
 
 - (void)setupView {
-    [self.couponImageView setImage:[UIImage imageNamed:self.couponModel.storeName]];
-    self.couponStoreName.text = self.couponModel.storeName;
+    [self.couponImageView setImage:[UIImageEffects imageByApplyingLightEffectToImage:[UIImage imageNamed:self.couponModel.storeName]]];
+    
+//    UIImageView *branding = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 70.0)];
+//    branding.clipsToBounds = YES;
+//    branding.image = [UIImage imageNamed:couponModel.storeName];
+//    branding.contentMode = UIViewContentModeScaleAspectFill;
+//    [self addSubview:branding];
+//    UIImageView *brandName = [[UIImageView alloc] initWithFrame:CGRectMake(5, 80, self.frame.size.width - 10, 50)];
+//    NSMutableString *name = [[NSMutableString alloc] init];
+//    [name appendString:couponModel.storeName];
+//    [name appendString:@"_logo"];
+//    brandName.image = [UIImage imageNamed:name];
+//    brandName.clipsToBounds = YES;
+//    brandName.contentMode = UIViewContentModeScaleToFill;
+//    [self addSubview:brandName];
+
+    
+    self.storeLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_logo",self.couponModel.storeName]];
+//    self.couponStoreName.text = self.couponModel.storeName;
     self.couponDiscountAmount.text = self.couponModel.storeDiscount;
     self.couponDiscountAmount.font = [UIFont fontWithName:@"TFArrow-Light" size:15];
     
@@ -59,27 +97,33 @@
     self.clientCouponCodeLabel.text = nil;
     self.clientCouponCodeLabel.font =
     self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
-
+    
     [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
 }
 
-#pragma mark - IBACtions 
+- (void)setupViewWithCouponModel:(CouponModel *)couponModel {
+    self.couponModel = couponModel;
+}
+
+
+#pragma mark - <SwipeServiceProtocol>
+
+- (void)serviceRecievedNewCoupon:(CouponModel *)coupon {
+    
+}
+
+-(void)serviceRecievedFailedNetworkRequest {
+    
+}
+
+
+#pragma mark - IBACtions
 
 - (IBAction)redeemButtonTapped:(id)sender {
-    [UIView transitionFromView:self.redeemView
+        [UIView transitionFromView:self.redeemView
                         toView:self.finalView
                       duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
-                    completion:^(BOOL finished) {
-                        [self.view layoutIfNeeded];
-                    }];
-}
-
-- (IBAction)swapButtonTapped:(id)sender {
-    [UIView transitionFromView:self.finalView
-                        toView:self.redeemView
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
                     completion:^(BOOL finished) {
                         [self.view layoutIfNeeded];
                     }];
@@ -99,5 +143,14 @@
 - (void)tapGestureRecognized:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+//Transition Back
+//[UIView transitionFromView:self.finalView
+//                    toView:self.redeemView
+//                  duration:0.5
+//                   options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
+//                completion:^(BOOL finished) {
+//                    [self.view layoutIfNeeded];
+//                }];
 
 @end
