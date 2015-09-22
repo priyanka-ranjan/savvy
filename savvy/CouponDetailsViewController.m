@@ -24,9 +24,11 @@
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
 @property (weak, nonatomic) IBOutlet UIImageView *storeLogoImageView;
-@property (nonatomic, strong) CouponModel *couponModel;
+@property (weak, nonatomic) IBOutlet UIImageView *finalViewStoreLogoImageView;
 
+@property (nonatomic, strong) CouponModel *couponModel;
 @property (nonatomic, strong) SwipeService *swipeService;
+
 @end
 
 @implementation CouponDetailsViewController
@@ -70,31 +72,17 @@
 - (void)setupView {
     [self.couponImageView setImage:[UIImageEffects imageByApplyingLightEffectToImage:[UIImage imageNamed:self.couponModel.storeName]]];
     
-//    UIImageView *branding = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 70.0)];
-//    branding.clipsToBounds = YES;
-//    branding.image = [UIImage imageNamed:couponModel.storeName];
-//    branding.contentMode = UIViewContentModeScaleAspectFill;
-//    [self addSubview:branding];
-//    UIImageView *brandName = [[UIImageView alloc] initWithFrame:CGRectMake(5, 80, self.frame.size.width - 10, 50)];
-//    NSMutableString *name = [[NSMutableString alloc] init];
-//    [name appendString:couponModel.storeName];
-//    [name appendString:@"_logo"];
-//    brandName.image = [UIImage imageNamed:name];
-//    brandName.clipsToBounds = YES;
-//    brandName.contentMode = UIViewContentModeScaleToFill;
-//    [self addSubview:brandName];
-
-    
+    self.finalViewStoreLogoImageView.image =
     self.storeLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_logo",self.couponModel.storeName]];
-//    self.couponStoreName.text = self.couponModel.storeName;
+    
     self.couponDiscountAmount.text = self.couponModel.storeDiscount;
-    self.couponDiscountAmount.font = [UIFont fontWithName:@"TFArrow-Light" size:15];
+    self.couponDiscountAmount.font = [UIFont fontWithName:@"TFArrow-Light" size:30];
     
     [self.bottomButton setTitle:@"Redeem" forState:UIControlStateNormal];
     
     [self.finalViewBackgroundImageView setImage:[UIImage imageNamed:self.couponModel.storeName]];
     self.userCouponCodeLabel.text = self.couponModel.storeName;
-    self.clientCouponCodeLabel.text = nil;
+    self.clientCouponCodeLabel.text = @"XXX-300";
     self.clientCouponCodeLabel.font =
     self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
     
@@ -131,6 +119,13 @@
 
 - (IBAction)doneButtonTapped:(id)sender {
     //send a post call
+    [UIView transitionFromView:self.finalView
+                        toView:self.redeemView
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
+                    completion:^(BOOL finished) {
+                        [self.view layoutIfNeeded];
+                    }];
 }
 
 #pragma mark - UITapGestureRecognizer
