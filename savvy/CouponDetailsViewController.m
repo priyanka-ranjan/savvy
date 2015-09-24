@@ -7,25 +7,26 @@
 
 #import "UIImageEffects.h"
 
-@interface CouponDetailsViewController () <SwipeServiceProtocol>
+@interface CouponDetailsViewController () <SwipeServiceProtocol, UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *couponImageView;
-@property (weak, nonatomic) IBOutlet UILabel *couponStoreName;
-@property (weak, nonatomic) IBOutlet UILabel *couponDiscountAmount;
-@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
-
-@property (weak, nonatomic) IBOutlet UIView *redeemView;
 @property (weak, nonatomic) IBOutlet UIView *finalView;
-
-@property (weak, nonatomic) IBOutlet UIImageView *finalViewBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *finalViewBackroundImageView;
+@property (weak, nonatomic) IBOutlet UILabel *userCouponCodeTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userCouponCodeLabel;
-
-@property (weak, nonatomic) IBOutlet UILabel *clientCouponCodeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *clientCouponCodeTitleLabel;
+@property (weak, nonatomic) IBOutlet UITextField *clientCouponCodeTextField;
 @property (weak, nonatomic) IBOutlet UIButton *doneButton;
 
-@property (weak, nonatomic) IBOutlet UIImageView *storeLogoImageView;
-@property (weak, nonatomic) IBOutlet UIImageView *finalViewStoreLogoImageView;
 
+@property (weak, nonatomic) IBOutlet UIView *redeemView;
+@property (weak, nonatomic) IBOutlet UIImageView *redeemViewBackgroundImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *redeemViewStoreLogoImageView;
+@property (weak, nonatomic) IBOutlet UILabel *collectionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *discountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+
+
+@property (nonatomic, assign) BOOL isCoupon;
 @property (nonatomic, strong) CouponModel *couponModel;
 @property (nonatomic, strong) SwipeService *swipeService;
 
@@ -45,12 +46,55 @@
     [super viewWillAppear:animated];
     [self setupView];
     [self setupSwipeService];
-    [self setupFinalAndRedeemView];
+    [self setupRoundedCornersAndBorders];
 }
 
 #pragma mark - Setup
 
--(void)setupFinalAndRedeemView {
+- (void)setupViewWithCouponModel:(CouponModel *)couponModel isCoupon:(BOOL)isCoupon delegate:(id)delegate {
+    self.couponModel = couponModel;
+    self.isCoupon = isCoupon;
+    self.delegate = delegate;
+}
+- (void)setupSwipeService {
+    self.swipeService = [[SwipeService alloc] init];
+    self.swipeService.delegate = self;
+}
+
+- (void)setupView {
+    [self setupAddToWalletOrRedeemView];
+    [self setupFinalView];
+    
+    self.clientCouponCodeTitleLabel.font =
+    self.userCouponCodeTitleLabel.font =
+    self.discountLabel.font =
+    self.collectionLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
+    self.clientCouponCodeTextField.font =
+    self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:30];
+}
+
+- (void)setupAddToWalletOrRedeemView {
+    [self.redeemViewBackgroundImageView setImage:[UIImage imageNamed:self.couponModel.storeName]];
+    self.redeemViewStoreLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_logo",self.couponModel.storeName]];
+    
+    self.discountLabel.text = self.couponModel.storeDiscount;
+    self.collectionLabel.text = self.couponModel.productType;
+    if (self.isCoupon) {
+        [self.bottomButton setTitle:@"Add To Wallet" forState:UIControlStateNormal];
+    } else {
+        [self.bottomButton setTitle:@"Redeem" forState:UIControlStateNormal];
+    }
+}
+
+- (void)setupFinalView {
+    [self.finalViewBackroundImageView setImage:[UIImageEffects imageByApplyingExtraLightEffectToImage:[UIImage imageNamed:self.couponModel.storeName]]];
+    self.userCouponCodeLabel.text = self.couponModel.userCouponString;
+    [self.doneButton setTitle:@"Cancel" forState:UIControlStateNormal];
+    self.clientCouponCodeTextField.delegate = self;
+
+}
+
+-(void)setupRoundedCornersAndBorders {
     [self.finalView.layer setCornerRadius:25.0];
     [self.finalView.layer setBorderColor:[UIColor blackColor].CGColor];
     [self.finalView.layer setBorderWidth:1.5];
@@ -62,37 +106,6 @@
     [self.redeemView.layer setBorderWidth:1.5];
     [self.redeemView.layer setMasksToBounds:YES];
 }
-
-
-- (void)setupSwipeService {
-    self.swipeService = [[SwipeService alloc] init];
-    self.swipeService.delegate = self;
-}
-
-- (void)setupView {
-    [self.couponImageView setImage:[UIImageEffects imageByApplyingLightEffectToImage:[UIImage imageNamed:self.couponModel.storeName]]];
-    
-    self.finalViewStoreLogoImageView.image =
-    self.storeLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_logo",self.couponModel.storeName]];
-    
-    self.couponDiscountAmount.text = self.couponModel.storeDiscount;
-    self.couponDiscountAmount.font = [UIFont fontWithName:@"TFArrow-Light" size:30];
-    
-    [self.bottomButton setTitle:@"Redeem" forState:UIControlStateNormal];
-    
-    [self.finalViewBackgroundImageView setImage:[UIImage imageNamed:self.couponModel.storeName]];
-    self.userCouponCodeLabel.text = self.couponModel.storeName;
-    self.clientCouponCodeLabel.text = @"XXX-300";
-    self.clientCouponCodeLabel.font =
-    self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
-    
-    [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
-}
-
-- (void)setupViewWithCouponModel:(CouponModel *)couponModel {
-    self.couponModel = couponModel;
-}
-
 
 #pragma mark - <SwipeServiceProtocol>
 
@@ -108,24 +121,36 @@
 #pragma mark - IBACtions
 
 - (IBAction)redeemButtonTapped:(id)sender {
+    if (self.isCoupon){
+        [self.delegate userPressedAddToWalletForCoupon:self.couponModel];
+    } else {
         [UIView transitionFromView:self.redeemView
-                        toView:self.finalView
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
-                    completion:^(BOOL finished) {
-                        [self.view layoutIfNeeded];
-                    }];
+                            toView:self.finalView
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
+                        completion:^(BOOL finished) {
+                            [self.view layoutIfNeeded];
+                        }];
+ 
+    }
 }
 
 - (IBAction)doneButtonTapped:(id)sender {
-    //send a post call
-    [UIView transitionFromView:self.finalView
-                        toView:self.redeemView
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft | UIViewAnimationOptionShowHideTransitionViews
-                    completion:^(BOOL finished) {
-                        [self.view layoutIfNeeded];
-                    }];
+    if (self.clientCouponCodeTextField.text.length == 0){
+        [UIView transitionFromView:self.finalView
+                            toView:self.redeemView
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromRight | UIViewAnimationOptionShowHideTransitionViews
+                        completion:^(BOOL finished) {
+                            [self.view layoutIfNeeded];
+                        }];
+
+    }else {
+        //send a post call
+        self.couponModel.clientCouponString = self.clientCouponCodeTextField.text;
+        [self.swipeService postCouponToRedeem:self.couponModel];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 #pragma mark - UITapGestureRecognizer
@@ -137,6 +162,19 @@
 
 - (void)tapGestureRecognized:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+#pragma mark - <UITextFieldDelegate>
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (textField.text.length != 0){
+        [self.doneButton setTitle:@"Done" forState:UIControlStateNormal];
+    } else {
+        [self.doneButton setTitle:@"Cancel" forState:UIControlStateNormal];
+
+    }
+    return YES;
 }
 
 //Transition Back

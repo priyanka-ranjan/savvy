@@ -17,5 +17,6 @@
 
 @property (nonatomic, weak) id <SwipeServiceProtocol> delegate;
 - (void)getNewCoupon;
+-(void)postCouponToRedeem:(CouponModel *)coupon;
 
 @end

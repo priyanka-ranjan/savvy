@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSString *storeName;
 @property (nonatomic, strong) NSString *storeDiscount;
 @property (nonatomic, strong) NSString *productType;
+@property (nonatomic, strong) NSString *userCouponString;
+@property (nonatomic, strong) NSString *clientCouponString;
 
 @end

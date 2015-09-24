@@ -22,7 +22,7 @@
     newCoupon.storeName = [self.brands objectAtIndex:random_brand];
     newCoupon.storeDiscount = [self.discounts objectAtIndex:random_dis];
     newCoupon.productType = [self.products objectAtIndex:random_prod];
-    
+    newCoupon.userCouponString = @"444-XXX";
     return newCoupon;
 }
 

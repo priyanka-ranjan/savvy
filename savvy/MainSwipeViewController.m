@@ -13,7 +13,7 @@
 
 #import "UIImageEffects.h"
 
-@interface MainSwipeViewController () <SwipeServiceProtocol>
+@interface MainSwipeViewController () <SwipeServiceProtocol, CouponDetailsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *leftBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *rightBackgroundImageView;
@@ -24,12 +24,14 @@
 @property (weak, nonatomic) IBOutlet WalletButton *firstWalletButton;
 @property (weak, nonatomic) IBOutlet WalletButton *secondWalletButton;
 @property (weak, nonatomic) IBOutlet WalletButton *thirdWalletButton;
+@property (weak, nonatomic) IBOutlet UIButton *profileButton;
 
 @property (nonatomic, strong) CouponModel *leftCouponModel;
 @property (nonatomic, strong) CouponModel *rightCouponModel;
 @property (nonatomic, strong) CouponModel *serverRecievedCoupon;
 
 @property (nonatomic, strong) SwipeService *swipeService;
+@property (nonatomic, assign) BOOL hasSeenServerCoupon;
 
 @end
 
@@ -41,6 +43,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupView];
     [self setupSwipeService];
     [self setupGestureRecognizers];
     
@@ -54,6 +57,11 @@
 }
 
 #pragma mark - Setup
+
+- (void)setupView {
+    self.profileButton.layer.cornerRadius= 30.0;
+    self.profileButton.layer.masksToBounds = YES;
+}
 
 - (void)setupSwipeService {
     self.swipeService = [[SwipeService alloc] init];
@@ -84,9 +92,9 @@
 
 - (void)generateLeftCoupon {
     self.leftCouponModel = [[CouponModel alloc] init];
-    if (self.serverRecievedCoupon) {
+    if (self.serverRecievedCoupon && !self.hasSeenServerCoupon) {
         self.leftCouponModel = self.serverRecievedCoupon;
-        self.serverRecievedCoupon = nil;
+        self.hasSeenServerCoupon = YES;
     }else {
         TestDataBuilder *testDataBuilder = [[TestDataBuilder alloc] init];
         while ([self.leftCouponModel.storeName isEqualToString:self.rightCouponModel.storeName] || self.leftCouponModel.storeName == nil) {
@@ -97,6 +105,8 @@
     UIImage *backgroundImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@_back",self.leftCouponModel.storeName]];
     UIImage *blurredBackgroundImage = [UIImageEffects imageByApplyingDarkEffectToImage:backgroundImage];
     [self.leftBackgroundImageView setImage:blurredBackgroundImage];
+    self.leftBackgroundImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.leftBackgroundImageView.layer.borderWidth = 1.5;
     [self.leftButton setupButtonForCouponModel:self.leftCouponModel];
     
     self.leftButton.tag = 0;
@@ -113,6 +123,10 @@
     
     [self.rightBackgroundImageView setImage:blurredBackgroundImage];
     [self.rightButton setupButtonForCouponModel:self.rightCouponModel];
+    
+    self.rightBackgroundImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    self.rightBackgroundImageView.layer.borderWidth = 1.5;
+    
     self.rightButton.tag = 1;
 }
 
@@ -184,23 +198,43 @@
 #pragma mark - IBActions
 
 - (IBAction)couponButtonTapped:(CouponButton *)sender {
-    [self presentCouponDetailsWithControllerForCoupon:sender.couponModel];
+    [self presentCouponDetailsWithControllerForCoupon:sender.couponModel isCoupon:YES];
 }
 
+- (IBAction)profileButtonTapped:(id)sender {
+    self.hasSeenServerCoupon = NO;
+}
 
 #pragma mark - Wallet View
 
 - (IBAction)walletButtonTapped:(WalletButton *)sender {
-    [self presentCouponDetailsWithControllerForCoupon:sender.couponModel];
+    if (sender.couponModel){
+        [self presentCouponDetailsWithControllerForCoupon:sender.couponModel isCoupon:NO];
+    }
 }
 
 
 #pragma mark - Helpers
 
-- (void)presentCouponDetailsWithControllerForCoupon:(CouponModel *)coupon {
+- (void)presentCouponDetailsWithControllerForCoupon:(CouponModel *)coupon isCoupon:(BOOL)isCoupon{
     CouponDetailsViewController *couponDetailsViewController = [[CouponDetailsViewController alloc]init];
     couponDetailsViewController.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    [couponDetailsViewController setupViewWithCouponModel:coupon];
+    [couponDetailsViewController setupViewWithCouponModel:coupon
+                                                 isCoupon:isCoupon
+                                                 delegate:self];
     [self presentViewController:couponDetailsViewController animated:YES completion:nil];
 }
+
+#pragma mark - <CouponDetailsViewControllerDelegate>
+
+- (void)userPressedAddToWalletForCoupon:(CouponModel *)coupon {
+    [self updateWalletsWithCoupon:coupon];
+    if(coupon == self.leftCouponModel){
+        [self generateLeftCoupon];
+    } else {
+        [self generateRightCoupon];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end

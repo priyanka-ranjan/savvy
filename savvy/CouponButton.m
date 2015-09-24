@@ -11,7 +11,7 @@
     self.couponModel = couponModel;
     
     CALayer *myLayer = self.layer;
-    [myLayer setCornerRadius:15.0];
+    [myLayer setCornerRadius:10.0];
     [myLayer setBorderColor:[UIColor blackColor].CGColor];
     [myLayer setBorderWidth:1.5];
     [self.layer setMasksToBounds:YES];
