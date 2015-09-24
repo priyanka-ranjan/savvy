@@ -95,7 +95,7 @@
 
 - (void)requestFailedWithError:(NSError *)error {
     NSLog(@"------------ It failed because: %@",error);
-    [self.delegate serviceRecievedFailedNetworkRequest];
+//    [self.delegate serviceRecievedFailedNetworkRequest];
 }
 
 @end

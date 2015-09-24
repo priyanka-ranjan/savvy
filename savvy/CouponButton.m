@@ -33,7 +33,7 @@
     [name appendString:@"_logo"];
     brandName.image = [UIImage imageNamed:name];
     brandName.clipsToBounds = YES;
-    brandName.contentMode = UIViewContentModeScaleToFill;
+    brandName.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:brandName];
     
     UILabel *product = [[UILabel alloc] initWithFrame:CGRectMake(0, 135, self.frame.size.width, 15)];
@@ -48,9 +48,13 @@
     discount.font = [UIFont fontWithName:@"TFArrow-Light" size:15];
     [self addSubview:discount];
     
+    CGRect frame = self.frame;
+    frame.origin.x = self.superview.bounds.size.width/2 - self.bounds.size.width;
+    self.frame = frame;
+    
     [UIView animateWithDuration:0.5 animations:^{
-        self.center = CGPointMake(self.superview.frame.size.width/2 - self.frame.size.width/2,
-                                  self.superview.frame.size.height/2 - self.frame.size.height/2);
+        self.center = CGPointMake(self.superview.bounds.size.width/2 - self.bounds.size.width/2,
+                                  self.superview.bounds.size.height/2 - self.bounds.size.height/2);
     }];
 }
 

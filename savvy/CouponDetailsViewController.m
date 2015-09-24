@@ -66,11 +66,13 @@
     [self setupAddToWalletOrRedeemView];
     [self setupFinalView];
     
+    self.discountLabel.font =
+    self.productLabel.font =[UIFont fontWithName:@"TFArrow-Light" size:20];
+    
     self.clientCouponCodeTitleLabel.font =
     self.userCouponCodeTitleLabel.font =
-    self.discountLabel.font =
-    self.productLabel.font = 
-    self.collectionLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
+    self.collectionLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:25];
+    
     self.clientCouponCodeTextField.font =
     self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:30];
 }
