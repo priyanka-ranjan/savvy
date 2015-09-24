@@ -12,6 +12,22 @@
 @end
 
 @implementation TestDataBuilder
+/*[
+ {
+ "code":"10PERCOFF",
+ "is_active":true,
+ "discount_percent":10,
+ "title_primary":"Collection Numero Uno",
+ "title_secondary":"Sec Title - Uno",
+ "campaign_id":"56035bab79ee271a2b5e05ed",
+ "store_id":"5603567c79ee271a2b5e05e3",
+ "product_skus":[
+ "sku-api-test-1",
+ "sku-001"
+ ]
+ }
+ ]
+ */
 
 - (CouponModel *) newRandomCoupon {
     int random_brand = arc4random() % 32;
@@ -21,13 +37,19 @@
     CouponModel *newCoupon = [[CouponModel alloc] init];
     newCoupon.storeName = [self.brands objectAtIndex:random_brand];
     newCoupon.storeDiscount = [self.discounts objectAtIndex:random_dis];
+    newCoupon.collectionType = @"Collection";
     newCoupon.productType = [self.products objectAtIndex:random_prod];
-    newCoupon.userCouponString = @"444-XXX";
+    newCoupon.campaignId = @"56035bab79ee271a2b5e05ed";
+    newCoupon.storeId = @"5603567c79ee271a2b5e05e3";
+    newCoupon.userCouponString = @"20PERCOFF";
+    newCoupon.productSkus = @[
+                              @"sku-api-test-2",
+                              @"sku-002"];
     return newCoupon;
 }
-
+// @"Banana Republic"
 - (NSArray *) brands {
-    return @[@"Abercrombie Fitch", @"Aeropostale", @"ALDO", @"American Eagle Outfitters", @"Ardene", @"Aritzia", @"Armani Exchange", @"Banana Republic", @"BCBGMAXAZRIA", @"Bench", @"Bluenotes", @"Club Monaco", @"Dynamite", @"Eddie Bauer", @"Forever 21", @"Garage", @"H&M", @"Harry Rosen", @"Hollister", @"Hot Topic", @"JCrew", @"La Vie En Rose", @"Lids", @"Lululemon Athletica", @"Old Navy", @"Reitmans", @"Roots", @"RW&Co", @"Scotch and Soda", @"Spring Lucky", @"TNA", @"Zara"];
+    return @[@"Abercrombie Fitch", @"Aeropostale", @"ALDO", @"American Eagle Outfitters", @"Ardene", @"Aritzia", @"Armani Exchange", @"BCBGMAXAZRIA", @"Bench", @"Bluenotes", @"Club Monaco", @"Dynamite", @"Eddie Bauer", @"Forever 21", @"Garage", @"H&M", @"Harry Rosen", @"Hollister", @"Hot Topic", @"JCrew", @"La Vie En Rose", @"Lids", @"Lululemon Athletica", @"Old Navy", @"Reitmans", @"Roots", @"RW&Co", @"Scotch and Soda", @"Spring Lucky", @"TNA", @"Zara"];
 }
 
 - (NSArray *) discounts {

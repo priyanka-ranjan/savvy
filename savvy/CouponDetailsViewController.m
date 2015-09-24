@@ -22,6 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *redeemViewBackgroundImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *redeemViewStoreLogoImageView;
 @property (weak, nonatomic) IBOutlet UILabel *collectionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
 @property (weak, nonatomic) IBOutlet UILabel *discountLabel;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 
@@ -68,6 +69,7 @@
     self.clientCouponCodeTitleLabel.font =
     self.userCouponCodeTitleLabel.font =
     self.discountLabel.font =
+    self.productLabel.font = 
     self.collectionLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:20];
     self.clientCouponCodeTextField.font =
     self.userCouponCodeLabel.font = [UIFont fontWithName:@"TFArrow-Light" size:30];
@@ -78,7 +80,9 @@
     self.redeemViewStoreLogoImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@_logo",self.couponModel.storeName]];
     
     self.discountLabel.text = self.couponModel.storeDiscount;
-    self.collectionLabel.text = self.couponModel.productType;
+    self.collectionLabel.text = self.couponModel.collectionType;
+    self.productLabel.text = self.couponModel.productType;
+    
     if (self.isCoupon) {
         [self.bottomButton setTitle:@"Add To Wallet" forState:UIControlStateNormal];
     } else {

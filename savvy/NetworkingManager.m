@@ -34,7 +34,8 @@
     
     NSString *urlAsString = [NSString stringWithFormat:@"https://api.meetup.com/2/groups?lat=%f&lon=%f&page=%d&key=%@", 40.4, 20.4, 20 , @"1f5718c16a7fb3a5452f45193232"];
     
-    [self.sessionManager GET:urlAsString
+//    http://2683cff4.ngrok.io/api/coupons/random
+    [self.sessionManager GET:@"https://2683cff4.ngrok.io/api/coupons/random"
                   parameters:nil
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                          [self.delegate requestPassedWithResponse:responseObject];
@@ -47,13 +48,13 @@
 
 
 - (void)postCouponModel:(CouponModel *)coupon {
-    NSDictionary *parameters = @{@"foo": @"bar"};
+    NSDictionary *parameters = @{@"clienCouponCode": coupon.clientCouponString};
     NSURL *filePath = [NSURL fileURLWithPath:@"file://path/to/image.png"];
     
-    [self.sessionManager POST:@""
+    [self.sessionManager PUT:@""
                    parameters:parameters
                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-                          [self.delegate requestPassedWithResponse:responseObject];
+//                          [self.delegate requestPassedWithResponse:responseObject];
                       } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
                           [self.delegate requestFailedWithError:error];
                       }];
