@@ -26,16 +26,16 @@
     self = [super init];
     if (self) {
         _sessionManager = [AFHTTPSessionManager manager];
+//        _sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+//        _sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithArray:@[@"text/html"]];
     }
     return self;
 }
 
 - (void)getCoupons {
-    
-    NSString *urlAsString = [NSString stringWithFormat:@"https://api.meetup.com/2/groups?lat=%f&lon=%f&page=%d&key=%@", 40.4, 20.4, 20 , @"1f5718c16a7fb3a5452f45193232"];
-    
-//    http://2683cff4.ngrok.io/api/coupons/random
-    [self.sessionManager GET:@"https://2683cff4.ngrok.io/api/coupons/random"
+//    http://c95ff889.ngrok.io/api/coupons
+    //http://getsavvy.info/api/coupons
+    [self.sessionManager GET:@"http://getsavvy.info/api/coupons" //@"http://129598a5.ngrok.io/api/coupons"
                   parameters:nil
                      success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
                          [self.delegate requestPassedWithResponse:responseObject];
@@ -48,13 +48,12 @@
 
 
 - (void)postCouponModel:(CouponModel *)coupon {
+    //http://c95ff889.ngrok.io/api/coupons/app
     NSDictionary *parameters = @{@"clienCouponCode": coupon.clientCouponString};
-    NSURL *filePath = [NSURL fileURLWithPath:@"file://path/to/image.png"];
-    
-    [self.sessionManager PUT:@""
+    [self.sessionManager POST:@"http://getsavvy.info/api/coupons/app"
                    parameters:parameters
                       success:^(NSURLSessionDataTask * _Nonnull task, id  _Nonnull responseObject) {
-//                          [self.delegate requestPassedWithResponse:responseObject];
+                          [self.delegate requestPassedWithResponse:responseObject];
                       } failure:^(NSURLSessionDataTask * _Nonnull task, NSError * _Nonnull error) {
                           [self.delegate requestFailedWithError:error];
                       }];
