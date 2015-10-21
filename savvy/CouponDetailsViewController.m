@@ -113,6 +113,7 @@
     [self.redeemView.layer setMasksToBounds:YES];
 }
 
+
 #pragma mark - <SwipeServiceProtocol>
 
 - (void)serviceRecievedNewCoupon:(CouponModel *)coupon {
@@ -180,6 +181,12 @@
         [self.doneButton setTitle:@"Cancel" forState:UIControlStateNormal];
 
     }
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self doneButtonTapped:nil];
     return YES;
 }
 

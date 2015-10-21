@@ -389,7 +389,7 @@
 				ORGANIZATIONNAME = Savvy;
 				TargetAttributes = {
 					72029EBB193517F7005A142F = {
-						DevelopmentTeam = FJCEW7SX37;
+						DevelopmentTeam = F77JK455ZE;
 					};
 					72029EDC193517F7005A142F = {
 						TestTargetID = 72029EBB193517F7005A142F;
@@ -624,6 +624,7 @@
 				GCC_PREFIX_HEADER = "Savvy/Savvy-Prefix.pch";
 				INFOPLIST_FILE = "Savvy/Savvy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranjan.Savvy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -642,6 +643,7 @@
 				GCC_PREFIX_HEADER = "Savvy/Savvy-Prefix.pch";
 				INFOPLIST_FILE = "Savvy/Savvy-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ranjan.Savvy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
